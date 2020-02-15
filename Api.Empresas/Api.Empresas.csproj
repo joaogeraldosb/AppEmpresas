@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>b6fa3ae6-0f78-4e4a-a006-759e9b271104</UserSecretsId>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data.Empresas\Data.Empresas.csproj" />
+    <ProjectReference Include="..\Service.Empresas\Service.Empresas.csproj" />
+    <ProjectReference Include="..\Util\Util.csproj" />
+  </ItemGroup>
+
+</Project>
