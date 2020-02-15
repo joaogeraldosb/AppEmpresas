@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Data.Empresas.Repositories
 {
-    public class EnterpriseRepository : IEntrerpriseRepository
+    public class EnterpriseRepository : IEnterpriseRepository
     {
         private readonly IRepository<Enterprise> _baseRepository;
 
@@ -61,5 +61,10 @@ namespace Data.Empresas.Repositories
         {
             return _baseRepository.Remove(id);
         }
+        public IQueryable<Enterprise> Query(Expression<Func<Enterprise, bool>> predicate = null, bool readOnly = false, string included = "")
+        {
+            return _baseRepository.Query(predicate, readOnly, included);
+        }
+
     }
 }

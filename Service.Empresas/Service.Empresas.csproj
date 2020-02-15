@@ -15,4 +15,9 @@
     <Folder Include="MapperFactories\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Data.Empresas\Data.Empresas.csproj" />
+    <ProjectReference Include="..\Domain.Empresas\Domain.Empresas.csproj" />
+  </ItemGroup>
+
 </Project>

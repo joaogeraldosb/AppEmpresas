@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Domain.Empresas.Repositories
 {
-    public interface IEntrerpriseRepository
+    public interface IEnterpriseRepository
     {
         Enterprise LoadNavigation(Enterprise enterprise, Expression<Func<Enterprise, object>> expression);
 
@@ -22,7 +22,7 @@ namespace Domain.Empresas.Repositories
         Enterprise Remove(Enterprise entity);
 
         Enterprise Remove(long id);
-
+        IQueryable<Enterprise> Query(Expression<Func<Enterprise, bool>> predicate = null, bool readOnly = false, string included = "");
 
     }
 }

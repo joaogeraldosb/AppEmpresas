@@ -9,7 +9,7 @@ namespace Service.Empresas.Services.Abstract
     public interface IEnterpriseFacade
     {
         EnterpriseListOutput Enterprises(EnterpriseFilter filter);
-        EnterpriseListOutput GetEnterprise(long id); 
+        EnterpriseDetailListOutput GetEnterprise(long id); 
 
     }
 }

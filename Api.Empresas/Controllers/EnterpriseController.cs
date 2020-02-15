@@ -10,21 +10,34 @@ using Service.Empresas.Services.Abstract;
 
 namespace Api.Empresas.Controllers
 {
-    //[ApiController]
-    //[Route("api/v1/[controller]")]
-    //[Produces("application/json")]
-    [ApiController, Route("api/v1/[controller]"), Produces("application/json")]
+    /// <summary>
+    /// 
+    /// </summary>
+    [ApiController]
+    [Route("api/v1/[controller]")]
+    [Produces("application/json")]
     [ValidateModelState]
     public class EnterpriseController : ControllerBase
     {
         private readonly IEnterpriseFacade _service;
 
-        public EnterpriseController(IEnterpriseFacade service) => _service = service;
+        /// <summary>
+        /// Contructor
+        /// </summary>
+        /// <param name="service"></param>
+        public EnterpriseController(IEnterpriseFacade service) => 
+            _service = service;
 
+        /// <summary>
+        /// Get Enterprices
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get([FromQuery]EnterpriseFilter input)
         {
-            return Ok(_service.Enterprises(input));
+            var enterprices = _service.Enterprises(input);
+            return Ok(enterprices);
         }
     }
 }

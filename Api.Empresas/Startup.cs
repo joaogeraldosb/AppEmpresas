@@ -19,6 +19,7 @@ using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service.Empresas.Services.Abstract;
+using Domain.Empresas.Unities;
 
 namespace Api.Empresas
 {
@@ -43,15 +44,18 @@ namespace Api.Empresas
         // This method gets called by the runtime. Use this method to add services to the container.        
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = "Server=JOAOGERALDO-PC\\MSSQLSERVER01;Database=EmpresasDB;Trusted_Connection=True;MultipleActiveResultSets=true;";
             services
                 .AddHttpContextAccessor()
                 .AddDbContext<EmpresasContext>(opts =>
-                    opts.UseSqlServer(Configuration.GetConnectionString("EmpresasContext")))
+                    opts.UseSqlServer(connectionString/*Configuration.GetConnectionString("EmpresasContext")*/))
 
                 .AddDbContext<EmpresasContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("EmpresasContext")))
                 .AddScoped<IRepository<Enterprise>, Repository<Enterprise>>()
                 .AddScoped<IRepository<EnterpriseType>, Repository<EnterpriseType>>()
                 .AddScoped<IEnterpriseTypeRepository, EnterpriseTypeRepository>()
+                .AddScoped<IEnterpriseFacade, EnterpriseService>()
+
                 // services
                 .AddScoped<IEnterpriseFacade, EnterpriseService>()
                 .AddMvcCore()

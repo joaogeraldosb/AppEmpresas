@@ -25,10 +25,10 @@ namespace Data.Empresas.Mapping
 
             builder.OwnsOne(m => m.Contact, contact =>
             {
-                contact.Property(m => m.Name).HasColumnType("varchar(100)").HasColumnName("Name").IsRequired(true);
+                contact.Property(m => m.ContactName).HasColumnType("varchar(100)").HasColumnName("ContactName").IsRequired(true);
                 contact.Property(m => m.Phone).HasColumnType("varchar(15)").HasColumnName("Phone").IsRequired(false);
                 contact.Property(m => m.CellPhone).HasColumnType("varchar(15)").HasColumnName("CellPhone").IsRequired(true);
-                contact.Property(m => m.Email).HasColumnType("varchar(100)").HasColumnName("CellPhone").IsRequired(true);
+                contact.Property(m => m.Email).HasColumnType("varchar(100)").HasColumnName("Email").IsRequired(true);
             });
         }
     }
