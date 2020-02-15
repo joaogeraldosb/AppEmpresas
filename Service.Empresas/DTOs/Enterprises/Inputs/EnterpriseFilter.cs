@@ -15,7 +15,7 @@ namespace Service.Empresas.DTOs.Enterprises.Inputs
         [FromQuery(Name = "phone")] public string Phone { get; set; }
         [FromQuery(Name = "cellphone")] public string CellPhone { get; set; }
         [FromQuery(Name = "email")] public string Email { get; set; }
-        [FromQuery(Name = "enterprise_types")] public int? EnterpriseTypeId { get; set; }
+        [FromQuery(Name = "enterprise_type")] public int? IdEnterpriseType { get; set; }
 
     }
 }

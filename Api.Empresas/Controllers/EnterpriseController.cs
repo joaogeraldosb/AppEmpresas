@@ -19,13 +19,13 @@ namespace Api.Empresas.Controllers
     [ValidateModelState]
     public class EnterpriseController : ControllerBase
     {
-        private readonly IEnterpriseFacade _service;
+        private readonly IEnterpriseService _service;
 
         /// <summary>
         /// Contructor
         /// </summary>
         /// <param name="service"></param>
-        public EnterpriseController(IEnterpriseFacade service) => 
+        public EnterpriseController(IEnterpriseService service) => 
             _service = service;
 
         /// <summary>
@@ -37,6 +37,9 @@ namespace Api.Empresas.Controllers
         public IActionResult Get([FromQuery]EnterpriseFilter input)
         {
             var enterprices = _service.Enterprises(input);
+            if(!enterprices.Any())
+                return NoContent();
+
             return Ok(enterprices);
         }
     }

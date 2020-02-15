@@ -6,6 +6,7 @@ using Domain.Empresas.Unities;
 using Service.Empresas.DTOs.Enterprises.Inputs;
 using Service.Empresas.DTOs.Enterprises.Outputs;
 using Service.Empresas.Services.Abstract;
+using Service.Empresas.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ using System.Text;
 
 namespace Service.Empresas.Services.Concrete
 {
-    public class EnterpriseService : IEnterpriseFacade
+    public class EnterpriseService : IEnterpriseService
     {
         private readonly IUnitOfWorkEnterprises _uow;
         private readonly IEnterpriseRepository _enterprises;
@@ -28,23 +29,20 @@ namespace Service.Empresas.Services.Concrete
             _mapper = mapper;
         }
 
-        public EnterpriseListOutput Enterprises(EnterpriseFilter filterEnterprise)
+        public List<EnterpriseDetailListOutput> Enterprises(EnterpriseFilter filter)
         {
-            var filterObject = _mapper.Map<Enterprise>(filterEnterprise);
+            var filterObject = _mapper.Map<Enterprise>(filter);
             var query = _enterprises.Query(
                 e => e.Active,
                 readOnly: true,
                 included: $"{nameof(Enterprise.EnterpriseType)}");
 
             // required filters
-            query = query.Where(e => filterObject.Name == e.Name || filterEnterprise.Name == null);
-            query = query.Where(e => filterObject.IdEnterpriseType == e.IdEnterpriseType || filterEnterprise.EnterpriseTypeId == null);
+            query = query.Where(e => (filterObject.Name == e.Name || filter.Name == null)
+                && (filterObject.IdEnterpriseType == e.IdEnterpriseType || filter.IdEnterpriseType == null));
 
-            // aditional filters. poorly made. not discovered yet a simpler and better way to enable all properties as filters but checking each one
-            query = query.Where(e => filterObject.Contact.Phone == e.Contact.Phone || filterEnterprise.Phone == null);
-            query = query.Where(e => filterObject.Contact.CellPhone == e.Contact.CellPhone || filterEnterprise.CellPhone == null);
-
-            return _mapper.Map<EnterpriseListOutput>(query.ToList());
+            var enterprises = query.ToList();
+            return _mapper.Map<List<EnterpriseDetailListOutput>>(enterprises);
         }
 
         public EnterpriseDetailListOutput GetEnterprise(long id)
@@ -52,6 +50,5 @@ namespace Service.Empresas.Services.Concrete
             var enterprise = _mapper.Map<Enterprise>(id);
             return _mapper.Map<EnterpriseDetailListOutput>(enterprise);
         }
-
     }
 }

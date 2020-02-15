@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
@@ -9,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Data.Empresas.Context;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using Domain.Empresas.Repositories;
 using Data.Empresas.Repositories;
 using Domain.Empresas.Entities;
@@ -20,6 +16,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Service.Empresas.Services.Abstract;
 using Domain.Empresas.Unities;
+using Data.Empresas.UnitOfWork;
+using Service.Empresas.Util;
+using Service.Empresas.MapperFactories;
+using AutoMapper;
+using Newtonsoft.Json;
 
 namespace Api.Empresas
 {
@@ -53,29 +54,31 @@ namespace Api.Empresas
                 .AddDbContext<EmpresasContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("EmpresasContext")))
                 .AddScoped<IRepository<Enterprise>, Repository<Enterprise>>()
                 .AddScoped<IRepository<EnterpriseType>, Repository<EnterpriseType>>()
+                .AddScoped<IUnitOfWorkEnterprises, UnitOfWorkEnterprise>()
+                .AddScoped<IUnitOfWork, UnitOfWork>()
+                .AddScoped<IEnterpriseRepository, EnterpriseRepository>()
                 .AddScoped<IEnterpriseTypeRepository, EnterpriseTypeRepository>()
-                .AddScoped<IEnterpriseFacade, EnterpriseService>()
-
                 // services
-                .AddScoped<IEnterpriseFacade, EnterpriseService>()
+                .AddScoped<IEnterpriseService, EnterpriseService>()
                 .AddMvcCore()
                 .AddAuthorization()
-                //.AddJsonFormatters()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-                  //.AddJsonOptions(options =>
-                  //{
-                  //    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                  //    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-                  //});
+                .AddJsonFormatters()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                });
 
+            // automapper services and profiles
             IServiceProvider provider = services.BuildServiceProvider();
             services
-                // automapper services and profiles
-                //.AddScoped(x => new MapperConfiguration(cfg =>
-                //{
-                //    cfg.AddProfile(new InputToDomainProfile(provider.GetRequiredService<IUnitOfEnterprises>()));
-                //    cfg.AddProfile(new DomainToOutputProfile());
-                //}).CreateMapper())
+                .AddSingleton<MapperFactory>()
+                .AddScoped(x => new MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfile(new ProfileToInput(provider.GetRequiredService<IUnitOfWorkEnterprises>()));
+                    cfg.AddProfile(new ProfileToOutput());
+                }).CreateMapper())
                 .AddAutoMapper(typeof(EnterpriseService));
         }
 

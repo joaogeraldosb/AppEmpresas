@@ -11,7 +11,7 @@ namespace Service.Empresas.DTOs.Enterprises.Outputs
         public int Id { get; set; }
         [JsonProperty("enterprise_type_name")]
         public string Name { get; set; }
-        [JsonProperty("enterprise_type_name")]
+        [JsonProperty("enterprise_type_description")]
         public string Description { get; set; }
 
     }

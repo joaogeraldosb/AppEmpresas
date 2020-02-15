@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Util;
+using Microsoft.Extensions.Logging;
 
 namespace Api.Empresas
 {
@@ -14,29 +15,42 @@ namespace Api.Empresas
     /// </summary>
     public class ExceptionMiddleware
     {
-        private readonly RequestDelegate RequestDelegate;
+        private readonly RequestDelegate _requestDelegate;
+        private readonly ILogger _logger;
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="requestDelegate"></param>
+        /// <param name="logger"></param>
+        public ExceptionMiddleware(RequestDelegate requestDelegate
+                                    , ILoggerFactory logger)
+        {
+            _requestDelegate = requestDelegate;
+            _logger = logger.CreateLogger("Global Errors");
+        }
 
-        public ExceptionMiddleware(RequestDelegate requestDelegate) =>
-            RequestDelegate = requestDelegate;
-
+        /// <summary>
+        /// Global try-catch
+        /// </summary>
+        /// <param name="httpContext"></param>
+        /// <returns></returns>
         public async Task InvokeAsync(HttpContext httpContext)
         {
             try
             {
-                await RequestDelegate(httpContext);
+                await _requestDelegate(httpContext);
             }
             catch (ApiException ex)
             {
-                //if (!string.IsNullOrWhiteSpace(ex.LogInfo))
-                //{
-                //    Logger.LogWarning(ex.LogInfo);
-                //}
+                if (!string.IsNullOrWhiteSpace(ex.LogInfo))
+                    _logger.LogWarning(ex.LogInfo);
 
                 await HandleExceptionAsync(httpContext, ex);
             }
             catch (Exception ex)
             {
-                //Logger.LogError(ex.Message);
+                _logger.LogError(ex.Message);
                 await HandleExceptionAsync(httpContext);
             }
         }

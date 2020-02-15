@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Domain.Empresas.Entities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,31 +10,52 @@ namespace Service.Empresas.DTOs.Enterprises.Outputs
     {
         public EnterpriseDetailOutput() {}
 
-        public EnterpriseDetailOutput(string name, string description)
+        public EnterpriseDetailOutput(Enterprise enterprise)
         {
-            Name = name;
-            Description = description;
+            Name = enterprise.Name;
+            Description = enterprise.Description;
+            RegistrationDate = enterprise.RegistrationDate;
+            IdEnterpriseType = enterprise.IdEnterpriseType;
+            EnterpriseType = new EnterpriseTypeOutput
+            {
+                Id = enterprise.EnterpriseType.Id,
+                Name = enterprise.EnterpriseType.Name,
+                Description = enterprise.EnterpriseType.Description
+            };
+            ContactName = enterprise.Contact.ContactName;
+            Phone = enterprise.Contact.Phone;
+            CellPhone = enterprise.Contact.CellPhone;
+            Email = enterprise.Contact.Email;
         }
 
         [JsonProperty("id")] 
         public int Id { get; set; }
-        [JsonProperty("id")]
+
+        [JsonProperty("name")]
         public string Name { get; set; }
-        [JsonProperty("id")]
+
+        [JsonProperty("description")]
         public string Description { get; set; }
-        [JsonProperty("id")]
+        
+        [JsonProperty("registration_date")]
         public DateTime RegistrationDate { get; set; }
-        [JsonProperty("id")]
+        
+        [JsonProperty("id_enterprise_type")]
         public int IdEnterpriseType { get; set; }
-        [JsonProperty("id")]
+        
+        [JsonProperty("enterprisetype")]
         public virtual EnterpriseTypeOutput EnterpriseType { get; set; }
-        [JsonProperty("id")]
+        
+        [JsonProperty("contact_name")]
         public string ContactName { get; set; }
-        [JsonProperty("id")]
+        
+        [JsonProperty("phone")]
         public string Phone { get; set; }
-        [JsonProperty("id")]
+        
+        [JsonProperty("cellphone")]
         public string CellPhone { get; set; }
-        [JsonProperty("id")]
+        
+        [JsonProperty("email")]
         public string Email { get; set; }
     }
 }

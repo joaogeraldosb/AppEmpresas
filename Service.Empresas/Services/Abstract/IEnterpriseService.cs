@@ -1,4 +1,5 @@
-﻿using Service.Empresas.DTOs.Enterprises.Inputs;
+﻿using Domain.Empresas.Entities;
+using Service.Empresas.DTOs.Enterprises.Inputs;
 using Service.Empresas.DTOs.Enterprises.Outputs;
 using System;
 using System.Collections.Generic;
@@ -6,10 +7,9 @@ using System.Text;
 
 namespace Service.Empresas.Services.Abstract
 {
-    public interface IEnterpriseFacade
+    public interface IEnterpriseService
     {
-        EnterpriseListOutput Enterprises(EnterpriseFilter filter);
+        List<EnterpriseDetailListOutput> Enterprises(EnterpriseFilter filter);
         EnterpriseDetailListOutput GetEnterprise(long id); 
-
     }
 }
