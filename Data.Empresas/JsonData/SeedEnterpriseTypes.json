@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Agro",
+    "id": 1,
+    "active":  true
+  },
+  {
+    "name": "Aviation",
+    "id": 2,
+    "active": true
+  },
+  {
+    "name": "Biotech",
+    "id": 3,
+    "active": true
+  },
+  {
+    "name": "Eco",
+    "id": 4,
+    "active": true
+  },
+  {
+    "name": "Ecommerce",
+    "id": 5,
+    "active": true
+  },
+  {
+    "name": "Education",
+    "id": 6,
+    "active": true
+  },
+  {
+    "name": "Fashion",
+    "id": 7,
+    "active": true
+  },
+  {
+    "name": "Fintech",
+    "id": 8,
+    "active": true
+  },
+  {
+    "name": "Food",
+    "id": 9,
+    "active": true
+  },
+  {
+    "name": "Games",
+    "id": 10,
+    "active": true
+  },
+  {
+    "name": "Health",
+    "id": 11,
+    "active": true
+  },
+  {
+    "name": "IOT",
+    "id": 12,
+    "active": true
+  },
+  {
+    "name": "Logistics",
+    "id": 13,
+    "active": true
+  },
+  {
+    "name": "Media",
+    "id": 14,
+    "active": true
+  },
+  {
+    "name": "Mining",
+    "id": 15,
+    "active": true
+  },
+  {
+    "name": "Products",
+    "id": 16,
+    "active": true
+  },
+  {
+    "name": "Real Estate",
+    "id": 17,
+    "active": true
+  },
+  {
+    "name": "Service",
+    "id": 18,
+    "active": true
+  },
+  {
+    "name": "Smart City",
+    "id": 19,
+    "active": true
+  },
+  {
+    "name": "Social",
+    "id": 20,
+    "active": true
+  },
+  {
+    "name": "Software",
+    "id": 21,
+    "active": true
+  },
+  {
+    "name": "Technology",
+    "id": 22,
+    "active": true
+  },
+  {
+    "name": "Tourism",
+    "id": 23,
+    "active": true
+  },
+  {
+    "name": "Transport",
+    "id": 24,
+    "active": true
+  }
+]

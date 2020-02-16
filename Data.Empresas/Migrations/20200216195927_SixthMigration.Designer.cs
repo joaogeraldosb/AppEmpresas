@@ -4,14 +4,16 @@ using Data.Empresas.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Empresas.Migrations
 {
     [DbContext(typeof(EmpresasContext))]
-    partial class EmpresasContextModelSnapshot : ModelSnapshot
+    [Migration("20200216195927_SixthMigration")]
+    partial class SixthMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,145 +100,145 @@ namespace Data.Empresas.Migrations
                         new
                         {
                             Id = 1,
-                            Active = true,
+                            Active = false,
                             Name = "Agro"
                         },
                         new
                         {
                             Id = 2,
-                            Active = true,
+                            Active = false,
                             Name = "Aviation"
                         },
                         new
                         {
                             Id = 3,
-                            Active = true,
+                            Active = false,
                             Name = "Biotech"
                         },
                         new
                         {
                             Id = 4,
-                            Active = true,
+                            Active = false,
                             Name = "Eco"
                         },
                         new
                         {
                             Id = 5,
-                            Active = true,
+                            Active = false,
                             Name = "Ecommerce"
                         },
                         new
                         {
                             Id = 6,
-                            Active = true,
+                            Active = false,
                             Name = "Education"
                         },
                         new
                         {
                             Id = 7,
-                            Active = true,
+                            Active = false,
                             Name = "Fashion"
                         },
                         new
                         {
                             Id = 8,
-                            Active = true,
+                            Active = false,
                             Name = "Fintech"
                         },
                         new
                         {
                             Id = 9,
-                            Active = true,
+                            Active = false,
                             Name = "Food"
                         },
                         new
                         {
                             Id = 10,
-                            Active = true,
+                            Active = false,
                             Name = "Games"
                         },
                         new
                         {
                             Id = 11,
-                            Active = true,
+                            Active = false,
                             Name = "Health"
                         },
                         new
                         {
                             Id = 12,
-                            Active = true,
+                            Active = false,
                             Name = "IOT"
                         },
                         new
                         {
                             Id = 13,
-                            Active = true,
+                            Active = false,
                             Name = "Logistics"
                         },
                         new
                         {
                             Id = 14,
-                            Active = true,
+                            Active = false,
                             Name = "Media"
                         },
                         new
                         {
                             Id = 15,
-                            Active = true,
+                            Active = false,
                             Name = "Mining"
                         },
                         new
                         {
                             Id = 16,
-                            Active = true,
+                            Active = false,
                             Name = "Products"
                         },
                         new
                         {
                             Id = 17,
-                            Active = true,
+                            Active = false,
                             Name = "Real Estate"
                         },
                         new
                         {
                             Id = 18,
-                            Active = true,
+                            Active = false,
                             Name = "Service"
                         },
                         new
                         {
                             Id = 19,
-                            Active = true,
+                            Active = false,
                             Name = "Smart City"
                         },
                         new
                         {
                             Id = 20,
-                            Active = true,
+                            Active = false,
                             Name = "Social"
                         },
                         new
                         {
                             Id = 21,
-                            Active = true,
+                            Active = false,
                             Name = "Software"
                         },
                         new
                         {
                             Id = 22,
-                            Active = true,
+                            Active = false,
                             Name = "Technology"
                         },
                         new
                         {
                             Id = 23,
-                            Active = true,
+                            Active = false,
                             Name = "Tourism"
                         },
                         new
                         {
                             Id = 24,
-                            Active = true,
+                            Active = false,
                             Name = "Transport"
                         });
                 });

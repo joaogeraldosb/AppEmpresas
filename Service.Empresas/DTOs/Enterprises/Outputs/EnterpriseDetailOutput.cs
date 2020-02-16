@@ -19,8 +19,7 @@ namespace Service.Empresas.DTOs.Enterprises.Outputs
             EnterpriseType = new EnterpriseTypeOutput
             {
                 Id = enterprise.EnterpriseType.Id,
-                Name = enterprise.EnterpriseType.Name,
-                Description = enterprise.EnterpriseType.Description
+                Name = enterprise.EnterpriseType.Name
             };
             ContactName = enterprise.Contact.ContactName;
             Phone = enterprise.Contact.Phone;
