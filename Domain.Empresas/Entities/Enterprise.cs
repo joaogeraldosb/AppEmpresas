@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Empresas.ComplexTypes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

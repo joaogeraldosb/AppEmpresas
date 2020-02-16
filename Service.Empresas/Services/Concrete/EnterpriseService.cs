@@ -45,10 +45,10 @@ namespace Service.Empresas.Services.Concrete
             return _mapper.Map<List<EnterpriseDetailListOutput>>(enterprises);
         }
 
-        public EnterpriseDetailListOutput GetEnterprise(long id)
+        public EnterpriseDetailOutput GetEnterprise(long id)
         {
-            var enterprise = _mapper.Map<Enterprise>(id);
-            return _mapper.Map<EnterpriseDetailListOutput>(enterprise);
+            var enterprise = _enterprises.GetWithKeys(id);
+            return _mapper.Map<EnterpriseDetailOutput>(enterprise);
         }
     }
 }

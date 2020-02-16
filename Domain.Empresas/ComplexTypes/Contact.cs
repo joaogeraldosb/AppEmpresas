@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Empresas.Entities
+namespace Domain.Empresas.ComplexTypes
 {
     public class Contact
     {

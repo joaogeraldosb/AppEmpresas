@@ -10,6 +10,6 @@ namespace Service.Empresas.Services.Abstract
     public interface IEnterpriseService
     {
         List<EnterpriseDetailListOutput> Enterprises(EnterpriseFilter filter);
-        EnterpriseDetailListOutput GetEnterprise(long id); 
+        EnterpriseDetailOutput GetEnterprise(long id);
     }
 }

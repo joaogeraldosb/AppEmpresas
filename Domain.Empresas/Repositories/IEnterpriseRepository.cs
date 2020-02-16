@@ -23,6 +23,5 @@ namespace Domain.Empresas.Repositories
 
         Enterprise Remove(long id);
         IQueryable<Enterprise> Query(Expression<Func<Enterprise, bool>> predicate = null, bool readOnly = false, string included = "");
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Empresas.ComplexTypes;
 using Domain.Empresas.Entities;
 using Domain.Empresas.Repositories;
 using Domain.Empresas.Unities;

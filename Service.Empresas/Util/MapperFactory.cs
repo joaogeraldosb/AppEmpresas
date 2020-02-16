@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Empresas.ComplexTypes;
 using Domain.Empresas.Entities;
 using Microsoft.Extensions.Options;
 using Service.Empresas.DTOs.Enterprises.Inputs;
@@ -36,8 +37,6 @@ namespace Service.Empresas.Util
                     .ForMember(m => m.Contact,
                                 opts => opts.MapFrom(s => new Contact(s.ContactName, s.Phone, s.CellPhone, s.Email)));
                     config.CreateMap<EnterpriseType, EnterpriseTypeOutput>();
-
-                    //config.CreateMap<Enterprise, EnterpriseOutput>();
                            
                 }).CreateMapper();
             }

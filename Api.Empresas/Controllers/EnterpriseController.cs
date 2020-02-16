@@ -42,5 +42,21 @@ namespace Api.Empresas.Controllers
 
             return Ok(enterprices);
         }
+
+        /// <summary>
+        /// Get Enterprices
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult Get([FromQuery]int id)
+        {
+            var enterprice = _service.GetEnterprise(id);
+            if (enterprice is null)
+                return NoContent();
+
+            return Ok(enterprice);
+        }
     }
 }
