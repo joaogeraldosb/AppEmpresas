@@ -66,7 +66,8 @@ namespace Api.Empresas.Controllers
             var user = _mapper.Map<User>(userInput);
 
             var jwtHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes("X3?1V!oDfHg%qrNb_kHF?eJznLyM3aL?CMKSm%2+0mLihnOwkfU+9jwHdXcGB$z+PXUyL+wn+AnDP$H#Od90H3S7Bju&@Se5x4OprALA20sgU^6GgvQ++lS6rv-6N4Ot^+|VmbqdI@C%x-0mm9mrag0wzF*&x&YbE_aP9Y0UBcc6H8u_w#InBA_XiNgr0^-H-K?10jHiJg!asVucmHmrUvMmMPavk&n#9kXbJEK&ud4pXzUg|Zm5$l7H_GvM+xIv");
+            var rawKey = "12345678909876543";/*Configuration["Keys:rawKey"]*/
+            var key = Encoding.UTF8.GetBytes(rawKey);
             var securityTokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

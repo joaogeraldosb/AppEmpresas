@@ -50,7 +50,7 @@ namespace Api.Empresas.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("{id}")]
-        public IActionResult Get([FromQuery]int id)
+        public IActionResult Get(int id)
         {
             var enterprice = _service.GetEnterprise(id);
             if (enterprice is null)

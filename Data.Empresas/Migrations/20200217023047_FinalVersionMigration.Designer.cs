@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Empresas.Migrations
 {
     [DbContext(typeof(EmpresasContext))]
-    [Migration("20200216195927_SixthMigration")]
-    partial class SixthMigration
+    [Migration("20200217023047_FinalVersionMigration")]
+    partial class FinalVersionMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -100,145 +100,145 @@ namespace Data.Empresas.Migrations
                         new
                         {
                             Id = 1,
-                            Active = false,
+                            Active = true,
                             Name = "Agro"
                         },
                         new
                         {
                             Id = 2,
-                            Active = false,
+                            Active = true,
                             Name = "Aviation"
                         },
                         new
                         {
                             Id = 3,
-                            Active = false,
+                            Active = true,
                             Name = "Biotech"
                         },
                         new
                         {
                             Id = 4,
-                            Active = false,
+                            Active = true,
                             Name = "Eco"
                         },
                         new
                         {
                             Id = 5,
-                            Active = false,
+                            Active = true,
                             Name = "Ecommerce"
                         },
                         new
                         {
                             Id = 6,
-                            Active = false,
+                            Active = true,
                             Name = "Education"
                         },
                         new
                         {
                             Id = 7,
-                            Active = false,
+                            Active = true,
                             Name = "Fashion"
                         },
                         new
                         {
                             Id = 8,
-                            Active = false,
+                            Active = true,
                             Name = "Fintech"
                         },
                         new
                         {
                             Id = 9,
-                            Active = false,
+                            Active = true,
                             Name = "Food"
                         },
                         new
                         {
                             Id = 10,
-                            Active = false,
+                            Active = true,
                             Name = "Games"
                         },
                         new
                         {
                             Id = 11,
-                            Active = false,
+                            Active = true,
                             Name = "Health"
                         },
                         new
                         {
                             Id = 12,
-                            Active = false,
+                            Active = true,
                             Name = "IOT"
                         },
                         new
                         {
                             Id = 13,
-                            Active = false,
+                            Active = true,
                             Name = "Logistics"
                         },
                         new
                         {
                             Id = 14,
-                            Active = false,
+                            Active = true,
                             Name = "Media"
                         },
                         new
                         {
                             Id = 15,
-                            Active = false,
+                            Active = true,
                             Name = "Mining"
                         },
                         new
                         {
                             Id = 16,
-                            Active = false,
+                            Active = true,
                             Name = "Products"
                         },
                         new
                         {
                             Id = 17,
-                            Active = false,
+                            Active = true,
                             Name = "Real Estate"
                         },
                         new
                         {
                             Id = 18,
-                            Active = false,
+                            Active = true,
                             Name = "Service"
                         },
                         new
                         {
                             Id = 19,
-                            Active = false,
+                            Active = true,
                             Name = "Smart City"
                         },
                         new
                         {
                             Id = 20,
-                            Active = false,
+                            Active = true,
                             Name = "Social"
                         },
                         new
                         {
                             Id = 21,
-                            Active = false,
+                            Active = true,
                             Name = "Software"
                         },
                         new
                         {
                             Id = 22,
-                            Active = false,
+                            Active = true,
                             Name = "Technology"
                         },
                         new
                         {
                             Id = 23,
-                            Active = false,
+                            Active = true,
                             Name = "Tourism"
                         },
                         new
                         {
                             Id = 24,
-                            Active = false,
+                            Active = true,
                             Name = "Transport"
                         });
                 });
@@ -251,19 +251,28 @@ namespace Data.Empresas.Migrations
 
                     b.Property<bool>("Active");
 
+                    b.Property<DateTime?>("LastLoginDate");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(100)")
                         .IsUnicode(false);
 
-                    b.Property<byte[]>("Senha")
+                    b.Property<byte[]>("Password")
                         .IsRequired();
-
-                    b.Property<DateTime?>("UltimoLogin");
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Active = true,
+                            Name = "testeapple@ioasys.com.br",
+                            Password = new byte[] { 215, 109, 248, 215, 109, 248 }
+                        });
                 });
 
             modelBuilder.Entity("Domain.Empresas.Entities.ControlToken", b =>

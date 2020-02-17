@@ -44,7 +44,7 @@ namespace Service.Empresas.Services.Concrete
             return _mapper.Map<List<EnterpriseIndexOutput>>(enterprises);
         }
 
-        public EnterpriseDetailOutput GetEnterprise(long id)
+        public EnterpriseDetailOutput GetEnterprise(int id)
         {
             var enterprise = _enterprises.GetWithKeys(id);
             return _mapper.Map<EnterpriseDetailOutput>(enterprise);

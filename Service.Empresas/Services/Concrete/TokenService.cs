@@ -22,12 +22,12 @@ namespace Service.Empresas.Services.Concrete
         private readonly IControlTokenRepository _controlToken;
         private readonly IUserRepository _users;
 
-        public TokenService(IUnitOfWorkAuth uow, IOptions<ApplicationSettings> settings)
+        public TokenService(IUnitOfWorkAuth uow)
         {
             _uow = uow;
             _users = _uow.Users;
-            _size = settings.Value.Token.Size;
-            _alphabet = settings.Value.Token.Alphabet;
+            _size = 4; //TODO: get of AppSetting
+            _alphabet = "12341234"; //TODO: get of AppSetting
         }
 
         public string Generate(int id)

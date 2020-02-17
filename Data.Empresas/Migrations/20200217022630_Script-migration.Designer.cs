@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Empresas.Migrations
 {
     [DbContext(typeof(EmpresasContext))]
-    [Migration("20200216200948_SeventhMigration")]
-    partial class SeventhMigration
+    [Migration("20200217022630_Script-migration")]
+    partial class Scriptmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -251,19 +251,28 @@ namespace Data.Empresas.Migrations
 
                     b.Property<bool>("Active");
 
+                    b.Property<DateTime?>("LastLoginDate");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(100)")
                         .IsUnicode(false);
 
-                    b.Property<byte[]>("Senha")
+                    b.Property<byte[]>("Password")
                         .IsRequired();
-
-                    b.Property<DateTime?>("UltimoLogin");
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Active = true,
+                            Name = "testeapple@ioasys.com.br",
+                            Password = new byte[] { 215, 109, 248, 215, 109, 248 }
+                        });
                 });
 
             modelBuilder.Entity("Domain.Empresas.Entities.ControlToken", b =>

@@ -13,11 +13,6 @@ namespace Service.Empresas.MapperFactories
         {
             CreateMap<EnterpriseType, EnterpriseTypeOutput>();
             CreateMap<Enterprise, EnterpriseDetailOutput>();
-
-            CreateMap<Enterprise, EnterpriseDetailListOutput>()
-                .ForMember(dest => dest.Enterprise,
-                           opts => opts.MapFrom(src => new EnterpriseDetailOutput(src)));
-
             CreateMap<Enterprise, EnterpriseIndexOutput>();
         }
     }

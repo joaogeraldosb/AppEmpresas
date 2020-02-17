@@ -2,7 +2,7 @@
 
 namespace Data.Empresas.Migrations
 {
-    public partial class SixthMigration : Migration
+    public partial class LastMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

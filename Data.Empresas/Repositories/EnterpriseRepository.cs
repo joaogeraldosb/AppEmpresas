@@ -27,12 +27,12 @@ namespace Data.Empresas.Repositories
             return _baseRepository.GetAll(included, readOnly);
         }
 
-        public Enterprise GetWithKeys(long id)
+        public Enterprise GetWithKeys(int id)
         {
             return _baseRepository.GetWithKeys(id);
         }
 
-        public Enterprise GetWithKeys(long id, IEnumerable<string> navigations = null, IEnumerable<string> collections = null)
+        public Enterprise GetWithKeys(int id, IEnumerable<string> navigations = null, IEnumerable<string> collections = null)
         {
             return _baseRepository.GetWithKeys(new[] { (object)id }, navigations: navigations, collections: collections);
         }
@@ -57,7 +57,7 @@ namespace Data.Empresas.Repositories
             return _baseRepository.Remove(entity);
         }
 
-        public Enterprise Remove(long id)
+        public Enterprise Remove(int id)
         {
             return _baseRepository.Remove(id);
         }

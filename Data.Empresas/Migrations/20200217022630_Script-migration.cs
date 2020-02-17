@@ -2,7 +2,7 @@
 
 namespace Data.Empresas.Migrations
 {
-    public partial class NinethMigration : Migration
+    public partial class Scriptmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
