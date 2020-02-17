@@ -33,10 +33,10 @@ namespace Data.Empresas.Mapping
                 contact.Property(m => m.Email).HasColumnType("varchar(100)").HasColumnName("Email").IsRequired(true);
             });
 
-            //var streamReader = new StreamReader("..\\Data.Empresas\\JsonData\\SeedEnterprises.json");
+            var streamReader = new StreamReader("..\\Data.Empresas\\JsonData\\SeedEnterprises.json");
             var dataEnterprises = JsonConvert.DeserializeObject<Enterprise[]>(streamReader.ReadToEnd());
 
-            builder.HasData(dataEnterprises);
+            //builder.HasData(dataEnterprises);
         }
     }
 }

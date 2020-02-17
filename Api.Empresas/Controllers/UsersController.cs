@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Api.Empresas.FilterAttributes;
 using AutoMapper;
 using Domain.Empresas.Entities;
 using Domain.Empresas.Unities;
@@ -19,14 +20,25 @@ using Service.Empresas.Services.Abstract;
 
 namespace Api.Empresas.Controllers
 {
-    [Route("api/[controller]")]
+    /// <summary>
+    /// User endpoints
+    /// </summary>
     [ApiController]
+    [Route("api/v1/[controller]")]
+    [Produces("application/json")]
+    [ValidateModelState]
     public class UsersController : ControllerBase
     {
         private readonly IUnitOfWorkAuth _uow;
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="uow"></param>
+        /// <param name="tokenService"></param>
+        /// <param name="mapper"></param>
         public UsersController(IUnitOfWorkAuth uow
             , ITokenService tokenService
             , IMapper mapper)

@@ -11,7 +11,7 @@ using Service.Empresas.Services.Abstract;
 namespace Api.Empresas.Controllers
 {
     /// <summary>
-    /// 
+    /// Enterprise endpoints
     /// </summary>
     [ApiController]
     [Route("api/v1/[controller]")]
@@ -44,7 +44,7 @@ namespace Api.Empresas.Controllers
         }
 
         /// <summary>
-        /// Get Enterprices
+        /// Get Enterprice
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
