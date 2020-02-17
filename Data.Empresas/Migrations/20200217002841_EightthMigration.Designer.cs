@@ -4,14 +4,16 @@ using Data.Empresas.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Empresas.Migrations
 {
     [DbContext(typeof(EmpresasContext))]
-    partial class EmpresasContextModelSnapshot : ModelSnapshot
+    [Migration("20200217002841_EightthMigration")]
+    partial class EightthMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

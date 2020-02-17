@@ -3,7 +3,7 @@
     "active": true,
     "name": "testeapple@ioasys.com.br",
     "id": 1,
-    "senha": true,
+    "password": "12341234",
     "lastlogindate": null
   }
 ]

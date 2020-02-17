@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Domain.Empresas.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Newtonsoft.Json;
 
 namespace Data.Empresas.Mapping
 {
@@ -30,6 +32,11 @@ namespace Data.Empresas.Mapping
                 contact.Property(m => m.CellPhone).HasColumnType("varchar(15)").HasColumnName("CellPhone").IsRequired(true);
                 contact.Property(m => m.Email).HasColumnType("varchar(100)").HasColumnName("Email").IsRequired(true);
             });
+
+            //var streamReader = new StreamReader("..\\Data.Empresas\\JsonData\\SeedEnterprises.json");
+            var dataEnterprises = JsonConvert.DeserializeObject<Enterprise[]>(streamReader.ReadToEnd());
+
+            builder.HasData(dataEnterprises);
         }
     }
 }

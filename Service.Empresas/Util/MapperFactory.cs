@@ -33,9 +33,7 @@ namespace Service.Empresas.Util
             {
                 return new MapperConfiguration(config =>
                 {
-                    config.CreateMap<EnterpriseFilter, Enterprise>()
-                    .ForMember(m => m.Contact,
-                                opts => opts.MapFrom(s => new Contact(s.ContactName, s.Phone, s.CellPhone, s.Email)));
+                    config.CreateMap<EnterpriseFilter, Enterprise>();
                     config.CreateMap<EnterpriseType, EnterpriseTypeOutput>();
                            
                 }).CreateMapper();

@@ -29,7 +29,7 @@ namespace Service.Empresas.Services.Concrete
             _mapper = mapper;
         }
 
-        public List<EnterpriseDetailListOutput> Enterprises(EnterpriseFilter filter)
+        public List<EnterpriseIndexOutput> Enterprises(EnterpriseFilter filter)
         {
             var filterObject = _mapper.Map<Enterprise>(filter);
             var query = _enterprises.Query(
@@ -37,12 +37,11 @@ namespace Service.Empresas.Services.Concrete
                 readOnly: true,
                 included: $"{nameof(Enterprise.EnterpriseType)}");
 
-            // required filters
             query = query.Where(e => (filterObject.Name == e.Name || filter.Name == null)
                 && (filterObject.IdEnterpriseType == e.IdEnterpriseType || filter.IdEnterpriseType == null));
 
             var enterprises = query.ToList();
-            return _mapper.Map<List<EnterpriseDetailListOutput>>(enterprises);
+            return _mapper.Map<List<EnterpriseIndexOutput>>(enterprises);
         }
 
         public EnterpriseDetailOutput GetEnterprise(long id)

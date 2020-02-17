@@ -20,7 +20,6 @@ namespace XUnitTest.Api.Empresas.IntegrationTests.ControllerTests
         private IEnterpriseService _enterpriseService;
         private Mock<IEnterpriseService> _acordoServiceMoq;
         private Mock<HttpContext> _context;
-        //private readonly MapperFactory mapper = new MapperFactory(MockOptions.GetOptions());
         private string _connectionString = "Server=JOAOGERALDO-PC\\MSSQLSERVER01;Database=EmpresasDB;Trusted_Connection=True;MultipleActiveResultSets=true;";
 
 

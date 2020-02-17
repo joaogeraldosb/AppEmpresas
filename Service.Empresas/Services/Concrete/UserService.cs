@@ -33,7 +33,7 @@ namespace Service.Empresas.Services.Concrete
             return _mapper.Map<UserOutput>(user);
         }
 
-        public UserOutput PostUser(UserInput userInput)
+        public UserOutput InsertUser(UserInput userInput)
         {
             var user    = _mapper.Map<User>(userInput);
             user        = _users.Insert(user);

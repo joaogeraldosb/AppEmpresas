@@ -21,9 +21,7 @@ namespace Service.Empresas.MapperFactories
             enterprises = uow.Enterprises;
             types = uow.Types;
 
-            CreateMap<EnterpriseFilter, Enterprise>()
-                    .ForMember(m => m.Contact,
-            opts => opts.MapFrom(s => new Contact(s.ContactName, s.Phone, s.CellPhone, s.Email)));
+            CreateMap<EnterpriseFilter, Enterprise>();
             
             CreateMap<EnterpriseType, EnterpriseTypeOutput>();
 

@@ -17,6 +17,8 @@ namespace Service.Empresas.MapperFactories
             CreateMap<Enterprise, EnterpriseDetailListOutput>()
                 .ForMember(dest => dest.Enterprise,
                            opts => opts.MapFrom(src => new EnterpriseDetailOutput(src)));
+
+            CreateMap<Enterprise, EnterpriseIndexOutput>();
         }
     }
 }

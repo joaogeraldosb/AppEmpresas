@@ -7,12 +7,7 @@ namespace Domain.Empresas.Entities
 {
     public class User : BaseEntity
     {
-        public User(string name, string password)
-        {
-            Name = name;
-            var hasher = new SHA512Managed();
-            Password = hasher.ComputeHash(Encoding.UTF8.GetBytes(password));
-        }
+        public User(){ }
 
         public int Id { get; set; }
         public String Name { get; set; }

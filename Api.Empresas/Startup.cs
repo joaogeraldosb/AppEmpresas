@@ -19,16 +19,12 @@ using Domain.Empresas.Unities;
 using Data.Empresas.UnitOfWork;
 using Service.Empresas.Util;
 using Service.Empresas.MapperFactories;
-using AutoMapper;
-using Newtonsoft.Json;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Api.Empresas
 {
-
-
     /// <summary>
     /// Startup
     /// </summary>
@@ -58,11 +54,14 @@ namespace Api.Empresas
                 .AddScoped<IRepository<Enterprise>, Repository<Enterprise>>()
                 .AddScoped<IRepository<EnterpriseType>, Repository<EnterpriseType>>()
                 .AddScoped<IUnitOfWorkEnterprises, UnitOfWorkEnterprise>()
+                .AddScoped<IUnitOfWorkAuth, UnitOfWorkAuth>()
                 .AddScoped<IUnitOfWork, UnitOfWork>()
                 .AddScoped<IEnterpriseRepository, EnterpriseRepository>()
                 .AddScoped<IEnterpriseTypeRepository, EnterpriseTypeRepository>()
-                // services
+                .AddScoped<IUserRepository, UserRepository>()
+                .AddScoped<IControlTokenRepository, ControlTokenRepository>()
                 .AddScoped<IEnterpriseService, EnterpriseService>()
+                .AddScoped<IUserService, UserService>()
                 .AddMvcCore()
                 .AddAuthorization()
                 .AddJsonFormatters()
@@ -73,11 +72,6 @@ namespace Api.Empresas
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.DescribeAllEnumsAsStrings();
-                //c.Configure();
-            });
             // automapper services and profiles
             IServiceProvider provider = services.BuildServiceProvider();
             services

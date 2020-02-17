@@ -9,6 +9,6 @@ namespace Service.Empresas.Services.Abstract
     public interface IUserService
     {
         UserOutput GetUser(long id);
-        UserOutput PostUser(UserInput user);
+        UserOutput InsertUser(UserInput user);
     }
 }
